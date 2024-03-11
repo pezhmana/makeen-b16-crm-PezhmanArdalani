@@ -3,7 +3,8 @@
   <title>Document</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="E:\project\crm\bootstrap " rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="E:\project\crm\resources\css\app.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
@@ -11,28 +12,28 @@
     <div class="container-fluid">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="http://localhost/class/first/karbar/modi.php">کاربران</a>
+          <a class="nav-link active" href="/users">کاربران</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/class/first/sefaresh/sefaresh.php">سفارشات</a>
+          <a class="nav-link" href="/orders">سفارشات</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/class/first/mahsol/mahsol.php">محصولات</a>
+          <a class="nav-link" href="/products">محصولات</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/class/first/maghale/posts.php">مقالات</a>
+          <a class="nav-link" href="/maghale">مقالات</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/class/first/categories/categories.php">دسته بندی</a>
+          <a class="nav-link" href="/categories">دسته بندی</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">اضافه کردن</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="http://localhost/class/first/mahsol/newm.php">محصول </a></li>
-            <li><a class="dropdown-item" href="http://localhost/class/first/sefaresh/news.php">سفارش</a></li>
-            <li><a class="dropdown-item" href="http://localhost/class/first/karbar/newc.php">کاربر</a></li>
-            <li><a class="dropdown-item" href="http://localhost/class/first/maghale/new_maghale.php">مقاله</a></li>
-            <li><a class="dropdown-item" href="http://localhost/class/first/categories/new_categories.php">دسته بندی </a></li>
+            <li><a class="dropdown-item" href="/products/create">محصول </a></li>
+            <li><a class="dropdown-item" href="/orders/create">سفارش</a></li>
+            <li><a class="dropdown-item" href="/users/create">کاربر</a></li>
+            <li><a class="dropdown-item" href="/maghale/create">مقاله</a></li>
+            <li><a class="dropdown-item" href="/categories/create">دسته بندی </a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -49,7 +50,7 @@
 
 <div class="container mt-3 border border-primary">
   <h2>کاربران</h2><br>
-  <p><a href="newc.php"><button type="button" class="btn btn-primary">اضافه کردن کاربر</button></a></p>
+  <p><a href="/users/create"><button type="button" class="btn btn-primary">اضافه کردن کاربر</button></a></p>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -103,7 +104,7 @@
     </div>
     <br>
 
-    <a href="http://localhost/class/first/maghale/posts.php">
+    <a href="/maghale">
     <div class="d-grid">
       <button type="button" class="btn btn-primary btn-block">مقاله ها </button>
     </div></a> <br>
@@ -114,7 +115,7 @@
 
 
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="http://localhost/class/first/categories/new_categories.php">اضافه کردن دسته بندی جدید</a></li>
+    <li><a class="dropdown-item" href="categories/create">اضافه کردن دسته بندی جدید</a></li>
     <li><a class="dropdown-item" href="#"></a></li>
 
 
