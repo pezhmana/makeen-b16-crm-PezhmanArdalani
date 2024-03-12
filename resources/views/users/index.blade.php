@@ -1,6 +1,6 @@
 <html lang="en" dir="rtl">
 <head>
-  <title>Document</title>
+  <title>userss</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -67,17 +67,25 @@
     </thead>
     <tbody>
 
+@foreach ($users as $user )
+
 
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><a href=""><button type="button" class="btn btn-danger" onclick="return confirm('حذف شود ؟')">حذف</button></a></td>
-            <td><a href="/users/edit"><button type="button" class="btn btn-warning" >ویرایش</button></a></td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->last_name}}</td>
+            <td>{{$user->phone}}</td>
+            <td>{{$user->password}}</td>
             <td>
+            <form action="/users/delete/{{$user->id}}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" value="delete" class="btn btn-danger" onclick="return confirm('حذف شود ؟')">حذف</button>
+            </form>
+            </td>
+            <td><a href="/users/edit/{{$user->id}}"><button type="button" class="btn btn-warning" >ویرایش</button></a></td>
+            <td>{{$user->gender}}</td>
         </tr>
-
+        @endforeach
 
 
     </tbody>
