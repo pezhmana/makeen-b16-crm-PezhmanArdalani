@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('order_name');
             $table->integer('number');
             $table->integer('order_number')->unique();
-            $table->bigInteger('pricep');
+            $table->bigInteger('price');
             $table->text('description')-> nullable();
             $table->timestamps();
         });

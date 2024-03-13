@@ -5,23 +5,28 @@
     <title>create categories</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="http://localhost/class/first/bootstrap.css ">
 </head>
 <body>
     <center>
      <button type="button" class="btn btn-danger reta " onclick="history.back()" >بازگشت</button>
         <div class=" border border-primary bala">
-            <form action="http://localhost/class/first/php/index.php" method="get">
+            <form action="/categories/create" method="post">
+                @csrf
                 <div class="mb-3 mt-3">
                   <label for="name" class="form-label"> اسم دسته بندی</label>
                   <input type="text" class="form-control" id="category_name"  name="category_name">
                 </div>
                 <div class="mb-3">
                   <label for="zirg" class="form-label">زیر گروه دارد ؟</label><br>
-                  <input type="text" class="form-control" id="zirg"  name="zirg" >
+                  <select name="supgroup" id="">
+                    <option value="yes">اره</option>
+                    <option value="no">نه</option>
+                  </select>
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="name" class="form-label"> اسم زیرگروه ها</label>
-                    <input type="text" class="form-control" id="zir_groha"  name="zir_groha">
+                    <input type="text" class="form-control" id="zir_groha"  name="supgroup_name">
                   </div>
 
           </div>

@@ -59,18 +59,27 @@
           </tr>
         </thead>
         <tbody>
+        <form action="/categories" method="GET"></form>
+        @foreach ($categories as $category)
+
 
         <tr>
-          <td></td>
-                <td></td>
-                <td></td>
+          <td>{{$category->category_name}}</td>
+                <td>{{$category->supgroup}}</td>
+                <td>{{$category->supgroup_name}}</td>
 
 
-                <td><a href=""><button type="button" class="btn btn-danger" onclick="return confirm('حذف شود ؟')">حذف</button></a></td>
-                <td><a href=""><button type="button" class="btn btn-warning" >ویرایش</button></a></td></tr>
-
+                <td><form action="/categories/delete/{{$category->id}}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" value="delete" class="btn btn-danger" onclick="return confirm('حذف شود ؟')">حذف</button>
+                </form>
+                </td>
+                <td><a href="/categories/edit/{{$category->id}}"><button type="button" class="btn btn-warning" >ویرایش</button></a></td>
+            </tr>
+            @endforeach
           </div>
-
+        </form>
 
           <div class="offcanvas offcanvas-start text-bg-dark" id="demo">
             <div class="offcanvas-header">

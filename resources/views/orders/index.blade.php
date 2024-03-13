@@ -49,7 +49,7 @@
       <hr>
       <div class="container mt-3 border border-primary">
         <h2>سفارشات</h2><br>
-        <p><a href="/products/create"><button type="button" class="btn btn-primary">اضافه کردن سفارش</button></a></p>
+        <p><a href="/orders/create"><button type="button" class="btn btn-primary">اضافه کردن سفارش</button></a></p>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -66,17 +66,25 @@
             </tr>
           </thead>
           <tbody>
+            @foreach ($orders as $order )
+
+
 
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><a href=""><button type="button" class="btn btn-danger" onclick="return confirm('حذف شود ؟')">حذف</button></a></td>
-                  <td><a href=""><button type="button" class="btn btn-warning">ویرایش</button></a></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{$order->name}}</td>
+                  <td>{{$order->last_name}}</td>
+                  <td>{{$order->phone}}</td>
+                  <td>
+                    <form action="/orders/delete/{{$order->id}}" method="POST">
+                        @csrf @method('delete')
+                        <button type="submit" value="delete" class="btn btn-danger" onclick="return confirm('حذف شود ؟')">حذف</button>
+                    </form></td>
+                  <td><a href="/orders/edit/{{$order->id}}"><button type="button" class="btn btn-warning">ویرایش</button></a></td>
+                  <td>{{$order->number}}</td>
+                  <td>{{$order->order_number}}</td>
 
                 </tr>
+                @endforeach
 
           </tbody>
         </table>

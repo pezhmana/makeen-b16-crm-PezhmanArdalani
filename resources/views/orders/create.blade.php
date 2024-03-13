@@ -2,14 +2,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>create products</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://localhost/class/first/bootstrap.css ">
 </head>
 <body>
     <center>
       <button type="button" class="btn btn-danger reta " onclick="history.back()" >بازگشت</button>
         <div class=" border border-primary bala">
-            <form action="http://localhost/class/first/php/index.php" method="get">
+            <form action="/orders/create" method="post">
+                @csrf
                 <div class="mb-3 mt-3">
                   <label for="name" class="form-label">اسم</label>
                   <input type="text" class="form-control" id="name"  name="name" >
@@ -28,7 +29,7 @@
                   </div>
                   <div class="mb-3 mt-3">
                     <label for="phone" class="form-label">تعداد سفارش</label>
-                    <input type="number" class="form-control " id="tedad"  name="tedad">
+                    <input type="number" class="form-control " id="tedad"  name="number">
                   </div>
                   <div class="mb-3 mt-3">
                     <label for="phone" class="form-label">شماره سفارش</label>
@@ -40,7 +41,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="tozihat" class="form-label">توضیحات</label>
-                    <input type="text" class="form-control " id="tozihat"  name="tozihat" >
+                    <input type="text" class="form-control " id="tozihat"  name="description" >
 
 
                   <button type="submit" class="btn btn-primary">ثبت</button>

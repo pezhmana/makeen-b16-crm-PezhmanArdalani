@@ -63,14 +63,25 @@
         </thead>
         <tbody>
         <tr>
-          <td></td>
-                <td></td>
-                <td></td>
+            <form action="/maghale" method="GET">
+            @foreach ($maghale as $maghal)
+          <td>{{$maghal->categories}}</td>
+                <td>{{$maghal->title}}</td>
+                <td>{{$maghal->writer}}</td>
 
-                <td><a href=""><button type="button" class="btn btn-danger" onclick="return confirm('حذف شود ؟')">حذف</button></a></td>
-                <td><a href=""><button type="button" class="btn btn-warning" >ویرایش</button></a></td></tr>
+            <td>
+                    <form action="/maghale/delete/{{$maghal->id}}" method="POST">
+                      @csrf
+                       @method('delete')
+                        <button type="submit" value="delete" class="btn btn-danger" onclick="return confirm('حذف شود ؟')">حذف</button>
+                    </form>
+            </td>
+                <td><a href="/maghale/edit/{{$maghal->id}}"><button type="button" class="btn btn-warning" >ویرایش</button></a></td>
+            </tr>
+            @endforeach
 
           </div>
+        </form>
 
 
           <div class="offcanvas offcanvas-start text-bg-dark" id="demo">

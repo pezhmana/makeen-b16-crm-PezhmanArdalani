@@ -134,10 +134,11 @@ Route::delete("/products/delete/{id}" , function ($id){
 
 
 
-//orders
+//orders get routes
 
 Route::get('/orders', function () {
-    return view('orders.index');
+  $orders = DB::table('orders')->get();
+    return view('orders.index' , ['orders'=>$orders]);
 });
 
 Route::get('/orders/create', function () {
@@ -145,13 +146,52 @@ Route::get('/orders/create', function () {
 });
 
 Route::get('/orders/edit/{id}', function ($id) {
-    return view('orders.edit');
+    $order = DB::table('orders')->where('id' , $id)->get()->first();
+        return view('orders.edit' , ['order'=>$order]);
 });
 
-//maghale
+//orders post routes
+Route::post('/orders/create', function (Request $request) {
+    DB::table('orders')->insert([
+        'id'=>$request->id,
+        'name'=>$request->name,
+        'last_name'=>$request->last_name,
+        'phone'=>$request->phone,
+        'order_name'=>$request->order_name,
+        'number'=>$request->number,
+        'order_number'=>$request->order_number,
+        'price'=>$request->price,
+        'description'=>$request->description,
+    ]);
+    return redirect('/orders');
+});
+
+Route::post('/orders/edit/{id}', function ($id , Request $request) {
+    DB::table('orders')->where('id',$id)->update([
+        'id'=>$request->id,
+        'name'=>$request->name,
+        'last_name'=>$request->last_name,
+        'phone'=>$request->phone,
+        'order_name'=>$request->order_name,
+        'number'=>$request->number,
+        'order_number'=>$request->order_number,
+        'price'=>$request->price,
+        'description'=>$request->description,
+    ]);
+    return redirect('/orders' );
+});
+
+Route::delete('/orders/delete/{id}', function ($id) {
+    DB::table('orders')->where('id', $id)->delete();
+    return redirect('/orders');
+});
+
+
+//maghale get routes
 
 Route::get('/maghale', function () {
-    return view('maghale.index');
+    $maghale = DB::table('posts')->get();
+    return view('maghale.index' , ['maghale'=>$maghale]);
 });
 
 Route::get('/maghale/create', function () {
@@ -159,13 +199,50 @@ Route::get('/maghale/create', function () {
 });
 
 Route::get('/maghale/edit/{id}', function ($id) {
-    return view('maghale.edit');
+    $maghale = DB::table('posts')->where('id',$id)->get()->first();
+    return view('maghale.edit' , ['maghale'=>$maghale]);
+
 });
 
-//categories
+//maghale post routes
+Route::post('/maghale/create', function (Request $request) {
+    DB::table('posts')->insert([
+       'id'=>$request->id,
+       'categories'=>$request->categories,
+       'title'=>$request->title,
+       'writer'=>$request->writer,
+       'date'=>$request->date,
+       'source'=>$request->source,
+    ]);
+    return redirect('/maghale');
+});
+
+Route::post('/maghale/edit/{id}', function (Request $request ,$id) {
+    DB::table('posts')->where('id',$id)->update([
+        'categories'=>$request->categories,
+       'title'=>$request->title,
+       'writer'=>$request->writer,
+       'date'=>$request->date,
+       'source'=>$request->source,
+    ]);
+    return redirect('/maghale');
+});
+
+Route::delete('/maghale/delete/{id}', function ($id) {
+    DB::table('posts')->where('id',$id)->delete();
+    return redirect('/maghale');
+});
+
+
+
+
+
+
+//categories get routes
 
 Route::get('/categories', function () {
-    return view('categories.index');
+    $categories = DB::table('categories')->get();
+    return view('categories.index' , ['categories'=>$categories]);
 });
 
 Route::get('/categories/create', function () {
@@ -173,8 +250,38 @@ Route::get('/categories/create', function () {
 });
 
 Route::get('/categories/edit/{id}', function ($id) {
-    return view('categories.edit');
+    $categories = DB::table('categories')->where('id',$id)->get()->first();
+    return view('categories.edit' , ['categories'=>$categories]);
 });
+
+//categories post routes
+
+Route::post('/categories/create', function (Request $request) {
+    DB::table('categories')->insert([
+        'category_name'=>$request->category_name,
+        'supgroup'=>$request->supgroup,
+        'supgroup_name'=>$request->supgroup_name,
+    ]);
+    return redirect('/categories');
+});
+
+Route::post('/categories/edit/{id}', function ($id , Request $request) {
+    DB::table('categories')->where('id', $id)->update([
+        'category_name'=>$request->category_name,
+        'supgroup'=>$request->supgroup,
+        'supgroup_name'=>$request->supgroup_name
+    ]);
+    return redirect('/categories');
+});
+
+Route::delete('/categories/delete/{id}', function ($id) {
+DB::table('categories')->where('id', $id)->delete();
+    return redirect('/categories');
+});
+
+
+
+
 
 //sign
 
