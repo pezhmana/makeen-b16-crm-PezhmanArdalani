@@ -19,7 +19,10 @@
                 </div>
                 <div class="mb-3">
                   <label for="zirg" class="form-label">زیر گروه دارد ؟</label><br>
-                  <input type="text" class="form-control" id="zirg"  name="supgroup" value="{{$categories->supgroup}}">
+                  <select name="supgroup" id="">
+                    <option value="yes" {{$categories->supgroup == 'yes' ? 'selected' : ''}} >اره</option>
+                    <option value="no" {{$categories->supgroup == 'no' ? 'selected' : ''}}>نه</option>
+                  </select>
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="name" class="form-label"> اسم زیرگروه ها</label>
