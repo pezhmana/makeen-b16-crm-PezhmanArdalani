@@ -38,7 +38,7 @@
               </div>
               <div class="mb-3">
                 <label for="jensiat" class="form-label">جسنیت:</label>
-               <select name="gender" id="">
+               <select name="gender" class="form-select form-select-lg mb-3">
                 <option value="male">مرد</option>
                 <option value="female">زن</option>
                </select>

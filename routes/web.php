@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Requests\categoriesCreateRequest;
+use App\Http\Requests\ordersCreateRequest;
+use App\Http\Requests\productsCreateRequest;
+use App\Http\Requests\userCreateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +42,7 @@ Route::get('/users/edit/{id}', function ($id) {
 });
 
 //user post routes
-Route::post('/users/create', function (Request $request) {
+Route::post('/users/create', function (userCreateRequest $request) {
     DB::table('users')->insert([
         'id'=>$request->id,
         'name'=>$request->name,
@@ -52,7 +56,7 @@ Route::post('/users/create', function (Request $request) {
     return redirect('/users');
 });
 
-route::post('/users/edit/{id}' , function (Request $request , $id){
+route::post('/users/edit/{id}' , function (userCreateRequest $request , $id){
     DB::table('users')->where('id' , $id)->update([
         'id'=>$request->id,
         'name'=>$request->name,
@@ -100,7 +104,7 @@ Route::get('/products/edit/{id}', function ($id) {
 
 
 //products post routes
-Route::post('/products/create', function (Request $request) {
+Route::post('/products/create', function (productsCreateRequest $request) {
     DB::table('products')->insert([
         "id"=>$request->id,
         "products_name"=>$request->products_name,
@@ -113,7 +117,7 @@ Route::post('/products/create', function (Request $request) {
     return redirect('/products');
 });
 
-Route::post('/products/edit/{id}', function (Request $request , $id) {
+Route::post('/products/edit/{id}', function (productsCreateRequest $request , $id) {
     DB::table('products')->where('id',$id)->update([
         "id"=>$request->id,
         "products_name"=>$request->products_name,
@@ -151,7 +155,7 @@ Route::get('/orders/edit/{id}', function ($id) {
 });
 
 //orders post routes
-Route::post('/orders/create', function (Request $request) {
+Route::post('/orders/create', function (ordersCreateRequest $request) {
     DB::table('orders')->insert([
         'id'=>$request->id,
         'name'=>$request->name,
@@ -166,7 +170,7 @@ Route::post('/orders/create', function (Request $request) {
     return redirect('/orders');
 });
 
-Route::post('/orders/edit/{id}', function ($id , Request $request) {
+Route::post('/orders/edit/{id}', function ($id , ordersCreateRequest $request) {
     DB::table('orders')->where('id',$id)->update([
         'id'=>$request->id,
         'name'=>$request->name,
@@ -195,17 +199,19 @@ Route::get('/maghale', function () {
 });
 
 Route::get('/maghale/create', function () {
-    return view('maghale.create');
+    $categories = DB::table('categories')->get();
+    return view('maghale.create' , ['categories'=>$categories]);
 });
 
 Route::get('/maghale/edit/{id}', function ($id) {
     $maghale = DB::table('posts')->where('id',$id)->get()->first();
-    return view('maghale.edit' , ['maghale'=>$maghale]);
+    $categories = DB::table('categories')->get();
+    return view('maghale.edit' , ['maghale'=>$maghale] , ['categories'=>$categories]);
 
 });
 
 //maghale post routes
-Route::post('/maghale/create', function (Request $request) {
+Route::post('/maghale/create', function (categoriesCreateRequest $request) {
     DB::table('posts')->insert([
        'id'=>$request->id,
        'categories'=>$request->categories,
@@ -213,11 +219,12 @@ Route::post('/maghale/create', function (Request $request) {
        'writer'=>$request->writer,
        'date'=>$request->date,
        'source'=>$request->source,
+       'catID'=>$request->catID
     ]);
     return redirect('/maghale');
 });
 
-Route::post('/maghale/edit/{id}', function (Request $request ,$id) {
+Route::post('/maghale/edit/{id}', function (categoriesCreateRequest $request ,$id) {
     DB::table('posts')->where('id',$id)->update([
         'categories'=>$request->categories,
        'title'=>$request->title,

@@ -14,7 +14,11 @@
                 @csrf
                 <div class="mb-3 mt-3">
                   <label for="name" class="form-label">موضوع</label>
-                  <input type="text" class="form-control" id="postcat"  name="categories" >
+                  <select name="categories" class="form-select form-select-lg mb-3">
+                    @foreach ($categories as $categories_id )
+                    <option value="{{$categories_id->category_name}}">{{$categories_id->category_name}}</option>
+                    @endforeach
+                  </select>
                 </div>
                 <div class="mb-3">
                   <label for="writer" class="form-label">تایتل:</label>

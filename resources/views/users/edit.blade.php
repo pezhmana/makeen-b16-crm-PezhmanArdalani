@@ -39,7 +39,7 @@
               </div>
               <div class="mb-3">
                 <label for="jensiat" class="form-label">جسنیت:</label>
-                <select name="gender" id="">
+                <select name="gender" class="form-select form-select-lg mb-3">
                     <option value="male" {{$user->gender == 'male' ? 'selected' : ''}}>مرد</option>
                     <option value="female" {{$user->gender == 'female' ? 'selected' : ''}}>زن</option>
                   </select>
