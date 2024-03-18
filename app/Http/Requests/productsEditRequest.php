@@ -24,7 +24,7 @@ class productsEditRequest extends FormRequest
     public function rules()
     {
         return [
-            //'products_name'=>'unique:products,products_name'
+            'products_name'=>'unique:products,products_name,except,id'
         ];
     }
 }

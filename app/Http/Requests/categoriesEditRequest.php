@@ -24,7 +24,7 @@ class categoriesEditRequest extends FormRequest
     public function rules()
     {
         return [
-           // 'category_name'=>'required|unique:categories,category_name,except,id',
+           'category_name'=>'required|unique:categories,category_name,except,id',
         ];
     }
 }

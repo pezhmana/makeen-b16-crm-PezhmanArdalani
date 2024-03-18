@@ -24,7 +24,7 @@ class maghaleEditRequest extends FormRequest
     public function rules()
     {
         return [
-           // 'title'=>'unique:posts,title'
+           'title'=>'unique:posts,title,except,id'
         ];
     }
 }

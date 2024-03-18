@@ -26,7 +26,7 @@ class userEditRequest extends FormRequest
         return [
             'name'=>'required|max:15',
             'last_name'=>'required|max:15',
-            //'phone'=> 'required|integer|size:11|unique:users,phone,',
+            'phone'=> 'required|integer|size:11|unique:users,phone,except,id',
             'password'=>'required',
             'country'=>'nullable',
             'description'=>'nullable',

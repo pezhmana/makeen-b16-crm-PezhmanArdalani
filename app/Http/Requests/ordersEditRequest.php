@@ -28,7 +28,7 @@ class ordersEditRequest extends FormRequest
         'last_name'=>'required|min :3|max : 20',
         'phone'=>'size:11',
         'number'=>'max:3',
-        //'order_number'=>'unique:orders,order_number'
+        'order_number'=>'unique:orders,order_number,except,id'
         ];
     }
 }
