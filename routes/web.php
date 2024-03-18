@@ -1,9 +1,15 @@
 <?php
 
 use App\Http\Requests\categoriesCreateRequest;
+use App\Http\Requests\categoriesEditRequest;
+use App\Http\Requests\maghaleCreateRequest;
+use App\Http\Requests\maghaleEditRequest;
 use App\Http\Requests\ordersCreateRequest;
+use App\Http\Requests\ordersEditRequest;
 use App\Http\Requests\productsCreateRequest;
+use App\Http\Requests\productsEditRequest;
 use App\Http\Requests\userCreateRequest;
+use App\Http\Requests\userEditRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -56,7 +62,7 @@ Route::post('/users/create', function (userCreateRequest $request) {
     return redirect('/users');
 });
 
-route::post('/users/edit/{id}' , function (userCreateRequest $request , $id){
+route::post('/users/edit/{id}' , function (userEditRequest $request , $id){
     DB::table('users')->where('id' , $id)->update([
         'id'=>$request->id,
         'name'=>$request->name,
@@ -90,14 +96,14 @@ Route::get('/products', function () {
 });
 
 Route::get('/products/create', function () {
-
-    return view('products.create');
+   $categories = DB::table('categories')->get();
+    return view('products.create' , ['categories'=>$categories]);
 });
 
 Route::get('/products/edit/{id}', function ($id) {
    $product =  DB::table('products')->where('id' , $id)->get()->first();
-
-    return view('products.edit' , ['product'=>$product]);
+   $categories = DB::table('categories')->get();
+    return view('products.edit' , ['product'=>$product] , ['categories'=>$categories]);
 });
 
 
@@ -117,7 +123,7 @@ Route::post('/products/create', function (productsCreateRequest $request) {
     return redirect('/products');
 });
 
-Route::post('/products/edit/{id}', function (productsCreateRequest $request , $id) {
+Route::post('/products/edit/{id}', function (productsEditRequest $request , $id) {
     DB::table('products')->where('id',$id)->update([
         "id"=>$request->id,
         "products_name"=>$request->products_name,
@@ -170,7 +176,7 @@ Route::post('/orders/create', function (ordersCreateRequest $request) {
     return redirect('/orders');
 });
 
-Route::post('/orders/edit/{id}', function ($id , ordersCreateRequest $request) {
+Route::post('/orders/edit/{id}', function ($id , ordersEditRequest $request) {
     DB::table('orders')->where('id',$id)->update([
         'id'=>$request->id,
         'name'=>$request->name,
@@ -211,7 +217,7 @@ Route::get('/maghale/edit/{id}', function ($id) {
 });
 
 //maghale post routes
-Route::post('/maghale/create', function (categoriesCreateRequest $request) {
+Route::post('/maghale/create', function (maghaleCreateRequest $request) {
     DB::table('posts')->insert([
        'id'=>$request->id,
        'categories'=>$request->categories,
@@ -224,7 +230,7 @@ Route::post('/maghale/create', function (categoriesCreateRequest $request) {
     return redirect('/maghale');
 });
 
-Route::post('/maghale/edit/{id}', function (categoriesCreateRequest $request ,$id) {
+Route::post('/maghale/edit/{id}', function (maghaleEditRequest $request ,$id) {
     DB::table('posts')->where('id',$id)->update([
         'categories'=>$request->categories,
        'title'=>$request->title,
@@ -263,7 +269,7 @@ Route::get('/categories/edit/{id}', function ($id) {
 
 //categories post routes
 
-Route::post('/categories/create', function (Request $request) {
+Route::post('/categories/create', function (categoriesCreateRequest $request) {
     DB::table('categories')->insert([
         'category_name'=>$request->category_name,
         'supgroup'=>$request->supgroup,
@@ -272,7 +278,7 @@ Route::post('/categories/create', function (Request $request) {
     return redirect('/categories');
 });
 
-Route::post('/categories/edit/{id}', function ($id , Request $request) {
+Route::post('/categories/edit/{id}', function ($id , categoriesEditRequest $request) {
     DB::table('categories')->where('id', $id)->update([
         'category_name'=>$request->category_name,
         'supgroup'=>$request->supgroup,

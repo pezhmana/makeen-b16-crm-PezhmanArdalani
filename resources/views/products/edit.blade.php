@@ -23,7 +23,11 @@
 
                   <div class="mb-3 mt-3">
                     <label for="name" class="form-label">دسته بندی</label>
-                    <input type="text" class="form-control" id="daste"  name="categories" value="{{$product->categories}}">
+                    <select name="categories" class="form-select form-select-lg mb-3">
+                        @foreach ($categories as $category)
+                        <option value="{{$category->category_name}}" {{$category->category_name == $category->category_name ? 'selected' : ''}} >{{$category->category_name}}</option>
+                        @endforeach
+                    </select>
                   </div>
                   <div class="mb-3 mt-3">
                     <label for="phone" class="form-label">تعداد محصول</label>

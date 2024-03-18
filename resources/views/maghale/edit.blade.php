@@ -14,9 +14,9 @@
                 @csrf
                 <div class="mb-3 mt-3">
                   <label for="name" class="form-label">موضوع</label>
-                  <select name="catID" class="form-select form-select-lg mb-3">
+                  <select name="categories" class="form-select form-select-lg mb-3">
                     @foreach ($categories as $categories_id )
-                    <option value="{{$categories_id->id}}">{{$categories_id->category_name}}</option>
+                    <option value="{{$categories_id->category_name}}">{{$categories_id->category_name}}</option>
                     @endforeach
                   </select>
                 </div>

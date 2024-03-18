@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
+
 class productsCreateRequest extends FormRequest
 {
     /**
@@ -13,7 +15,7 @@ class productsCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,7 @@ class productsCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'products_name'=>'unique:products,products_name,except,id'
+            'products_name'=>'unique:products,products_name'
         ];
     }
 }

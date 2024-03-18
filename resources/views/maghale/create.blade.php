@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="writer" class="form-label">تایتل:</label>
-                  <input type="text" class="form-control" id="post_title"  name="title">
+                  <input type="text" class="form-control" id="title"  name="title">
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="phone" class="form-label">نویسنده:</label>
