@@ -8,39 +8,39 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-sm bg-light navbar-light">
-    <div class="container-fluid">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="/users">کاربران</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/orders">سفارشات</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/products">محصولات</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/maghale">مقالات</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/categories">دسته بندی</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">اضافه کردن</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/products/create">محصول </a></li>
-            <li><a class="dropdown-item" href="/orders/create">سفارش</a></li>
-            <li><a class="dropdown-item" href="/users/create">کاربر</a></li>
-            <li><a class="dropdown-item" href="/maghale/create">مقاله</a></li>
-            <li><a class="dropdown-item" href="/categories/create">دسته بندی </a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <button class="btn  btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-            منو برای اینده
-          </button>
-        </li>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <div class="container-fluid">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="{{route('users.index')}}">کاربران</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('orders.index')}}">سفارشات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('products.index')}}">محصولات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('maghale.index')}}">مقالات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('categories.index')}}">دسته بندی</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">اضافه کردن</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{route('products.createGet')}}">محصول </a></li>
+                <li><a class="dropdown-item" href="{{route('orders.createGet')}}">سفارش</a></li>
+                <li><a class="dropdown-item" href="{{route('users.createGet')}}">کاربر</a></li>
+                <li><a class="dropdown-item" href="{{route('maghale.createGet')}}">مقاله</a></li>
+                <li><a class="dropdown-item" href="{{route('categories.createGet')}}">دسته بندی </a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <button class="btn  btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                منو برای اینده
+              </button>
+            </li>
 
 
       </ul>
