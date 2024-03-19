@@ -22,7 +22,7 @@ class productsController extends Controller
 
     public function createPost(productsCreateRequest $request){
         DB::table('products')->insert([$request->except('_token')]);
-        return redirect('/products');
+        return redirect(route('products.index'));
     }
 
     public function editPost(productsEditRequest $request , $id){
@@ -39,7 +39,7 @@ class productsController extends Controller
 
     public function delete($id){
         DB::table('products')->where('id',$id)->delete();
-        return redirect('/products');
+        return redirect(route('products.index'));
 
     }
     public function index(){
